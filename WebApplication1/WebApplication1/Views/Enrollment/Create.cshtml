@@ -1,0 +1,47 @@
+@model WebApplication1.Models.Enrollment
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Enrollment</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="student" class="control-label"></label>
+                <select name="studentId" class="form-control">
+                    <option value="">-- Select student --</option>
+
+                    @foreach (var  student in ViewBag.student)
+                    {
+                        <option value="@student.id">@student.name</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="course" class="control-label"></label>
+                <select name="courseId" class="form-control">
+                    <option value="">-- Select course --</option>
+
+                    @foreach (var course in ViewBag.course)
+                    {
+                        <option value="@course.id">@course.name</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

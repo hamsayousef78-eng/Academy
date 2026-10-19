@@ -66,7 +66,12 @@ namespace WebApplication1.Controllers
         }
         public IActionResult Details(int id)
         {
-            var student = _context.students.Find(id);
+            var student = _context.students
+                .Include(d => d.department)
+                .Include(d => d.enrollments)
+                 .ThenInclude(d => d.course)
+                 .FirstOrDefault(d => d.id==id);
+
             if (student != null)
             {
                 return View(student);

@@ -11,8 +11,8 @@ using WebApplication1.Models;
 namespace WebApplication1.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20261018172803_createEnrollment")]
-    partial class createEnrollment
+    [Migration("20261019182217_Editenroll")]
+    partial class Editenroll
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -60,23 +60,18 @@ namespace WebApplication1.Migrations
 
             modelBuilder.Entity("WebApplication1.Models.Enrollment", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
+                    b.Property<int>("studentId")
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("courseId")
                         .HasColumnType("int");
 
-                    b.Property<int>("studentId")
+                    b.Property<int>("Id")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("studentId", "courseId");
 
                     b.HasIndex("courseId");
-
-                    b.HasIndex("studentId");
 
                     b.ToTable("enrollments");
                 });

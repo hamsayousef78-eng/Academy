@@ -11,19 +11,49 @@
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.name)
+            name
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.name)
+            @Model.name
         </dd>
     </dl>
+    <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.age)
+            age
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.age)
+        @Model.age
         </dd>
     </dl>
+    <dl class="row">
+        <dt class="col-sm-2">
+            department
+        </dt>
+        <dd class="col-sm-10">
+            @Model.department.name
+        </dd>
+    </dl>
+    <dd class="col-sm-10">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>course ID</th>
+                    <th>course Name</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var enrollment in Model.enrollments)
+                {
+                    <tr>
+                        <td>@enrollment.course.id</td>
+                        <td>@enrollment.course.name</td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </dd>
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model?.id">Edit</a> |
