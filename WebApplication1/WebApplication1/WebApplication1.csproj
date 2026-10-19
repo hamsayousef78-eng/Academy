@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="EntityFramework" Version="6.5.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.12">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -20,7 +19,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Views\Department\" />
+    <Folder Include="Views\Course\" />
     <Folder Include="Views\Student\" />
   </ItemGroup>
-
+	<ItemGroup>
+  <PackageReference Include="System.Security.Cryptography.Pkcs" Version="9.0.21" />
+	</ItemGroup>
 </Project>

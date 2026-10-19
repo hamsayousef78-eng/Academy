@@ -21,6 +21,23 @@ namespace WebApplication1.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("WebApplication1.Models.Course", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
+
+                    b.Property<string>("name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("courses");
+                });
+
             modelBuilder.Entity("WebApplication1.Models.Department", b =>
                 {
                     b.Property<int>("id")
@@ -36,6 +53,29 @@ namespace WebApplication1.Migrations
                     b.HasKey("id");
 
                     b.ToTable("departments");
+                });
+
+            modelBuilder.Entity("WebApplication1.Models.Enrollment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("courseId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("studentId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("courseId");
+
+                    b.HasIndex("studentId");
+
+                    b.ToTable("enrollments");
                 });
 
             modelBuilder.Entity("WebApplication1.Models.Student", b =>
@@ -63,6 +103,25 @@ namespace WebApplication1.Migrations
                     b.ToTable("students");
                 });
 
+            modelBuilder.Entity("WebApplication1.Models.Enrollment", b =>
+                {
+                    b.HasOne("WebApplication1.Models.Course", "course")
+                        .WithMany("enrollments")
+                        .HasForeignKey("courseId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("WebApplication1.Models.Student", "student")
+                        .WithMany("enrollments")
+                        .HasForeignKey("studentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("course");
+
+                    b.Navigation("student");
+                });
+
             modelBuilder.Entity("WebApplication1.Models.Student", b =>
                 {
                     b.HasOne("WebApplication1.Models.Department", "department")
@@ -74,9 +133,19 @@ namespace WebApplication1.Migrations
                     b.Navigation("department");
                 });
 
+            modelBuilder.Entity("WebApplication1.Models.Course", b =>
+                {
+                    b.Navigation("enrollments");
+                });
+
             modelBuilder.Entity("WebApplication1.Models.Department", b =>
                 {
                     b.Navigation("students");
+                });
+
+            modelBuilder.Entity("WebApplication1.Models.Student", b =>
+                {
+                    b.Navigation("enrollments");
                 });
 #pragma warning restore 612, 618
         }

@@ -6,6 +6,8 @@ namespace WebApplication1.Models
     {
         public DbSet<Student> students { get; set;  }
         public DbSet<Department> departments { get; set; }
+        public DbSet<Course> courses { get; set; }
+        public DbSet<Enrollment> enrollments { get; set; }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
 

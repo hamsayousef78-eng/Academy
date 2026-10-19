@@ -26,9 +26,9 @@
             <div class="form-group">
                 <label asp-for="department" class="control-label"></label>
                 <select name="departmentId" class="form-control">
-                    @foreach (var depart in ViewBag.depart)
+                    @foreach (var depart in ViewBag.department)
                     {
-                            if (depart.id==Model.departmentId)//مش فاهمه اوووي
+                            if (depart.id==Model.departmentId)//بنلف ع كل الاقسام ونشوف لو ال رقم بتاع القسم يساوي ال الرقم بتاع القسم للطالب اللي بعمل له تعديل
                             {
                             <option selected value="@depart.id">@depart.name</option>
                             }

@@ -14,30 +14,31 @@ namespace WebApplication1.Controllers
         }
         public IActionResult Index()
         {
-            var students=_context.students.Include(x=>x.department).ToList();
+            var students=_context.students.Include(x=>x.department).ToList();//navigation
             return View(students);
         }
         public IActionResult Create()
         {
-            ViewBag.depart = _context.departments.ToList();
+            ViewBag.department = _context.departments.ToList();
             return View();
         }
         [HttpPost]
         public IActionResult Create(Student student)
         {
             _context.students.Add(student);
-           _context.SaveChanges();//عشان تتحفظ في ال DB
-            return RedirectToAction("Index");
+            _context.SaveChanges();
+            return RedirectToAction("index");
         }
+
         public IActionResult Edit(int id)
         {
-            ViewBag.depart = _context.departments.ToList();
+            ViewBag.department = _context.departments.ToList();
             var student = _context.students.Find(id);
-            if(student !=null)
+            if(student!=null)
             {
                 return View(student);
             }
-            else
+            else 
             {
                 return NotFound();
             }
@@ -47,7 +48,7 @@ namespace WebApplication1.Controllers
         {
             _context.students.Update(student);
             _context.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("index");
         }
         public IActionResult Delete(int id)
         {
@@ -56,7 +57,7 @@ namespace WebApplication1.Controllers
             {
                 _context.students.Remove(student);
                 _context.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("index");
             }
             else
             {

@@ -7,10 +7,12 @@ namespace WebApplication1.Models
         public int id {  get; set; }
         public string name { get; set; }
         public int age { get; set; }
-        [ForeignKey("Department")]
+        [ForeignKey("department")]
         public int departmentId { get; set; }
         //Navigation property
         public Department department { get; set; }
+
+        public List<Enrollment> enrollments { get; set; }
 
     }
 }
