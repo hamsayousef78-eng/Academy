@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>
+      Course Rounds | Core Academy
+    </title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="app">
+      <aside class="sidebar">
+        <a class="brand" href="index.html">
+          <div class="brand-mark">
+            C
+          </div>
+          <div>
+            <div class="brand-name">
+              Core Academy
+            </div>
+            <div class="brand-sub">
+              Management Portal
+            </div>
+          </div>
+        </a>
+        <div class="nav-label">
+          Workspace
+        </div>
+        <nav class="nav">
+          <a href="index.html">
+            <span class="nav-icon">
+              ▦
+            </span>
+            Dashboard
+          </a>
+          <a href="courses.html">
+            <span class="nav-icon">
+              ▤
+            </span>
+            Courses
+          </a>
+          <a href="instructors.html">
+            <span class="nav-icon">
+              ♙
+            </span>
+            Instructors
+          </a>
+          <a href="students.html">
+            <span class="nav-icon">
+              ♧
+            </span>
+            Students
+          </a>
+          <a class="active" href="rounds.html">
+            <span class="nav-icon">
+              ▦
+            </span>
+            Course Rounds
+          </a>
+        </nav>
+        <div class="nav-label" style="margin-top:22px">
+          Management
+        </div>
+        <nav class="nav">
+          <a href="enrollments.html">
+            <span class="nav-icon">
+              ☷
+            </span>
+            Enrollments
+          </a>
+          <a href="reports.html">
+            <span class="nav-icon">
+              ▥
+            </span>
+            Reports
+          </a>
+          <a href="settings.html">
+            <span class="nav-icon">
+              ⚙
+            </span>
+            Settings
+          </a>
+        </nav>
+        <div class="sidebar-foot">
+          <div class="avatar">
+            CA
+          </div>
+          <div>
+            <div class="profile-name">
+              Academy Admin
+            </div>
+            <div class="profile-role">
+              Administrator
+            </div>
+          </div>
+        </div>
+      </aside>
+      <main class="main">
+        <header class="topbar">
+          <div>
+            <div class="crumb">
+              <a href="index.html">
+                Workspace
+              </a>
+              / Course Rounds
+            </div>
+            <h1 class="top-title">
+              Course Rounds
+            </h1>
+          </div>
+          <div class="top-right">
+            <div class="search">
+              ⌕ &nbsp; Search rounds...
+            </div>
+            <div class="avatar">
+              CA
+            </div>
+          </div>
+        </header>
+        <div class="content">
+          <div class="page-head">
+            <div>
+              <div class="eyebrow">
+                Batches & schedules
+              </div>
+              <h2 class="page-title">
+                Course Rounds
+              </h2>
+              <p class="page-desc">
+                Each round represents a scheduled delivery of a course with an assigned instructor.
+              </p>
+            </div>
+            <a class="btn btn-primary" href="#round-form">
+              ＋ Create round
+            </a>
+          </div>
+          <div class="metrics" style="grid-template-columns:repeat(3,minmax(0,1fr))">
+            <div class="metric">
+              <div class="metric-top">
+                Running
+                <span class="metric-icon teal">
+                  ↗
+                </span>
+              </div>
+              <div class="metric-value">
+                03
+              </div>
+              <div class="metric-foot">
+                Currently in progress
+              </div>
+            </div>
+            <div class="metric">
+              <div class="metric-top">
+                Upcoming
+                <span class="metric-icon">
+                  ◷
+                </span>
+              </div>
+              <div class="metric-value">
+                02
+              </div>
+              <div class="metric-foot">
+                Starting soon
+              </div>
+            </div>
+            <div class="metric">
+              <div class="metric-top">
+                Enrollments
+                <span class="metric-icon orange">
+                  ♧
+                </span>
+              </div>
+              <div class="metric-value">
+                86
+              </div>
+              <div class="metric-foot">
+                Across active rounds
+              </div>
+            </div>
+          </div>
+          <section class="panel">
+            <div class="toolbar">
+              <div>
+                <div class="cell-title">
+                  All rounds
+                </div>
+                <div class="panel-sub">
+                  Schedules and enrollment status
+                </div>
+              </div>
+              <select>
+                <option>
+                  All statuses
+                </option>
+                <option>
+                  Running
+                </option>
+                <option>
+                  Upcoming
+                </option>
+              </select>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>
+                      Round
+                    </th>
+                    <th>
+                      Course
+                    </th>
+                    <th>
+                      Instructor
+                    </th>
+                    <th>
+                      Start date
+                    </th>
+                    <th>
+                      Students
+                    </th>
+                    <th>
+                      Status
+                    </th>
+                    <th>
+                      Action
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="cell-title">
+                        C++ Fundamentals · R05
+                      </div>
+                    </td>
+                    <td>
+                      C++ Fundamentals
+                    </td>
+                    <td>
+                      Mina Hassan
+                    </td>
+                    <td>
+                      Oct 24, 2026
+                    </td>
+                    <td>
+                      18
+                    </td>
+                    <td>
+                      <span class="pill upcoming-pill">
+                        Upcoming
+                      </span>
+                    </td>
+                    <td>
+                      <a class="mini-btn" href="#round-form">
+                        Details
+                      </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="cell-title">
+                        OOP Masterclass · R02
+                      </div>
+                    </td>
+                    <td>
+                      Object-Oriented Programming
+                    </td>
+                    <td>
+                      Sara Adel
+                    </td>
+                    <td>
+                      Oct 28, 2026
+                    </td>
+                    <td>
+                      16
+                    </td>
+                    <td>
+                      <span class="pill active-pill">
+                        Enrollment open
+                      </span>
+                    </td>
+                    <td>
+                      <a class="mini-btn" href="#round-form">
+                        Details
+                      </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="cell-title">
+                        ASP.NET Core · R03
+                      </div>
+                    </td>
+                    <td>
+                      ASP.NET Core Backend
+                    </td>
+                    <td>
+                      Youssef Ali
+                    </td>
+                    <td>
+                      Oct 11, 2026
+                    </td>
+                    <td>
+                      21
+                    </td>
+                    <td>
+                      <span class="pill active-pill">
+                        Running
+                      </span>
+                    </td>
+                    <td>
+                      <a class="mini-btn" href="#round-form">
+                        Details
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="table-footer">
+              <span>
+                Illustrative schedules
+              </span>
+              <span>
+                Static preview
+              </span>
+            </div>
+          </section>
+          <section id="round-form" class="panel" style="padding:20px;margin-top:18px">
+            <h3 class="panel-title">
+              Round form placeholder
+            </h3>
+            <p class="page-desc">
+              The real form will contain Course and Instructor dropdowns filled from EF Core relationships.
+            </p>
+          </section>
+          <div class="footer">
+            © Core Academy · Static HTML prototype
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

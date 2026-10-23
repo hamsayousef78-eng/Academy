@@ -1,0 +1,122 @@
+﻿@model IEnumerable<WebApplication1.Models.Instructor>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="content">
+    <div class="page-head">
+        <div>
+            <div class="eyebrow">
+                Learner directory
+            </div>
+            <h2 class="page-title">
+                Instructors
+            </h2>
+           
+        </div>
+        <a class="btn btn-primary" asp-controller="Instructor" asp-action="Create">
+            Add instructor
+        </a>
+    </div>
+    <section class="panel">
+        <div class="toolbar">
+            <div>
+                <div class="cell-title">
+                    Instructor directory
+                </div>
+            
+            </div>
+            <select>
+                <option>
+                    All instructors
+                </option>
+                <option>
+                    Active
+                </option>
+            </select>
+        </div>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>
+                            Instructor
+                        </th>
+                        <th>
+                            Email
+                        </th>
+                        <th>
+                            Phone
+                        </th>
+                        <th>
+                            Specialization
+                        </th>
+                          <th>
+                            Bio
+                        </th>
+                          <th>
+                            Image
+                        </th>
+                        <th>
+                            Status
+                        </th>
+                        <th>
+                            Action
+                        </th>
+                    </tr>
+                </thead>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(model => item.name)
+                        </td>
+                        <td>
+                           
+                            @Html.DisplayFor(model => item.Email)
+                         
+                        </td>
+                        <td>
+                        
+                            @Html.DisplayFor(model => item.phone)
+                         
+                        </td>
+                         <td>
+                        
+                            @Html.DisplayFor(model => item.specialization)
+                         
+                        </td>
+                         <td>
+                        
+                            @Html.DisplayFor(model => item.bio)
+                         
+                        </td>
+                        <td>
+                    
+                            @Html.DisplayFor(model => item.ImagePath)
+                           
+                        </td>
+                        <td>
+                          @if (item.IsActive)
+                         {
+                       <span class="pill active-pill">Active</span>
+                       }
+                      else
+                       {
+                                <span class="pill upcoming-pill">Inactive</span>
+                       }
+                        </td>
+                     
+                        <td>
+                            <a class="mini-btn"  asp-action="Edit" asp-route-id="@item.id">Edit</a> 
+                            <a class="mini-btn"  asp-action="Details" asp-route-id="@item.id">Details</a>
+                            <a class="mini-btn"  asp-action="Delete" asp-route-id="@item.id">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            </table>
+        </div>
+        
+    </section>
+

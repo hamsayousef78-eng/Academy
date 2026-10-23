@@ -1,26 +1,118 @@
+
 @model WebApplication1.Models.Course
 
 @{
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
-
-<div>
-    <h4>Course</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.name)
-        </dd>
-    </dl>
-
-    </dl>
+<div class="content">
+    <div class="page-head">
+        <div>
+            <div class="eyebrow">
+                Course catalog / @Model.name
+            </div>
+            <h2 class="page-title">
+                Course details
+            </h2>
+        </div>
+        <div class="actions">
+            <a class="btn btn-light"  asp-controller="Course" asp-action="Index">
+                ← Back
+            </a>
+            <a class="btn btn-primary" asp-route-id="@Model.id" asp-controller="Course" asp-action="Edit">
+                ✎ Edit course
+            </a>
+        </div>
+    </div>
+    <section class="panel">
+        <div class="details-header">
+            
+            <div class="details-title">
+                @Model.name
+            </div>
+            
+        </div>
+        <div class="details-body">
+            <div class="detail-grid">
+                <div class="detail-item">
+                    <div class="detail-label">
+                      Course
+                    </div>
+                    <div class="detail-value">
+                        @Model.name
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">
+                        description
+                    </div>
+                    <div class="detail-value">
+                        @Model.description
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">
+                        category
+                    </div>
+                    <div class="detail-value">
+                        @Model.category
+                    </div>
+                </div>
+                  <div class="detail-item">
+                    <div class="detail-label">
+                        Duration Hours
+                    </div>
+                    <div class="detail-value">
+                        @Model.durationHours
+                    </div>
+                </div>
+                  <div class="detail-item">
+                    <div class="detail-label">
+                        price
+                    </div>
+                    <div class="detail-value">
+                        @Model.price
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">
+                        Image
+                    </div>
+                    <div class="detail-value">
+                        @Model.ImagePath
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">
+                        Status
+                    </div>
+                    <div class="detail-value">
+                        @if (@Model.IsActive)
+                        {
+                            <span class="pill active-pill">Active</span>
+                        }
+                        else
+                        {
+                            <span class="pill upcoming-pill">Inactive</span>
+                        }
+                    </div>
+                </div>
+               
+            </div>
+        
+            <div class="form-footer">
+                <a class="btn btn-light" asp-controller="Course" asp-action="Index">
+                    Back to list
+                </a>
+                <a class="btn btn-primary" asp-route-id="@Model.id" asp-controller="Course" asp-action="Edit">
+                    Edit student
+                </a>
+                <a class="btn btn-danger" asp-route-id="@Model.id" asp-controller="Course" asp-action="Delete">
+                    Delete student
+                </a>
+            </div>
+        </div>
+    </section>
+   =
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+

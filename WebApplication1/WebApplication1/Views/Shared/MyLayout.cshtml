@@ -1,0 +1,132 @@
+﻿
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>
+        Core Academy | Dashboard
+    </title>
+    <link rel="stylesheet" href="~/css/styles.css">
+</head>
+<body>
+    <div class="app">
+        <aside class="sidebar">
+            <a class="brand" href="index.html">
+                <div class="brand-mark">
+                    C
+                </div>
+                <div>
+                    <div class="brand-name">
+                        Core Academy
+                    </div>
+                    <div class="brand-sub">
+                        Management Portal
+                    </div>
+                </div>
+            </a>
+            <div class="nav-label">
+                Workspace
+            </div>
+            <nav class="nav">
+                <a class="active" asp-controller="Home" asp-action="Index">
+                    <span class="nav-icon">
+                        ▦
+                    </span>
+                    Dashboard
+                </a>
+                <a asp-controller="Course" asp-action="Index">
+                    <span class="nav-icon">
+                        ▤
+                    </span>
+                    Courses
+                </a>
+                <a asp-controller="Instructor" asp-action="Index">
+                    <span class="nav-icon">
+                        ♙
+                    </span>
+                    Instructors
+                </a>
+                <a asp-controller="Student" asp-action="Index">
+                    <span class="nav-icon">
+                        ♧
+                    </span>
+                    Students
+                </a>
+                <a asp-controller="CourseRound" asp-action="Index">
+                    <span class="nav-icon">
+                        ▦
+                    </span>
+                    Course Rounds
+                </a>
+            </nav>
+            <div class="nav-label" style="margin-top:22px">
+                Management
+            </div>
+            <nav class="nav">
+                <a href="enrollments.html">
+                    <span class="nav-icon">
+                        ☷
+                    </span>
+                    Enrollments
+                </a>
+                <a href="reports.html">
+                    <span class="nav-icon">
+                        ▥
+                    </span>
+                    Reports
+                </a>
+                <a href="settings.html">
+                    <span class="nav-icon">
+                        ⚙
+                    </span>
+                    Settings
+                </a>
+            </nav>
+            <div class="sidebar-foot">
+                <div class="avatar">
+                    CA
+                </div>
+                <div>
+                    <div class="profile-name">
+                        Academy Admin
+                    </div>
+                    <div class="profile-role">
+                        Administrator
+                    </div>
+                </div>
+            </div>
+        </aside>
+        <main class="main">
+            <header class="topbar">
+                <div>
+                    <div class="crumb">
+                        Workspace / Dashboard
+                    </div>
+                    <h1 class="top-title">
+                        Dashboard Overview
+                    </h1>
+                </div>
+                <div class="top-right">
+                    <div class="search">
+                        ⌕ &nbsp; Search records...
+                    </div>
+                    <div class="circle-btn">
+                        ♧
+                    </div>
+                    <div class="avatar">
+                        CA
+                    </div>
+                </div>
+            </header>
+            <div class="content">
+                <div>@RenderBody()</div>
+             </div>
+                <div class="footer">
+                    © Core Academy · Static HTML prototype
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

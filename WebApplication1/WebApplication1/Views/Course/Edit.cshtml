@@ -4,32 +4,104 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
 
-<h4>Course</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="id" />
-            <div class="form-group">
-                <label asp-for="name" class="control-label"></label>
-                <input asp-for="name" class="form-control" />
-                <span asp-validation-for="name" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+<div class="content">
+    <div class="page-head">
+        <div>
+            <h2 class="page-title">
+                Edit @Model.name
+            </h2>
+        </div>
+        <a asp-controller="Course" asp-action="Index" class="btn btn-light">
+            ← Back to Courses
+        </a>
     </div>
+    <section class="panel form-panel">
+        <form asp-controller="Course" asp-action="Edit" method="post">
+            <div class="field">
+                <label asp-for="id">
+                    Course ID
+                </label>
+                <input asp-for="id" value="@Model.id" readonly>
+            </div>
+            <div class="field">
+                <label asp-for="name">
+                    Course name 
+                </label>
+                <input asp-for="name" value="@Model.name">
+            </div>
+          
+            <div class="two-fields">
+                <div class="field">
+                    <label asp-for="description">
+                        description
+                    </label>
+                    <input asp-for="description"  min="0" value="@Model.description">
+                </div>
+                <div class="field">
+                    <label asp-for="category">
+                        category
+                    </label>
+                    <input asp-for="category" min="0" value="@Model.category">
+                </div>
+            </div>
+            <div class="two-fields">
+                <div class="field">
+                    <label asp-for="durationHours">
+                        durationHours
+                    </label>
+                    <input asp-for="durationHours"  min="0" value="@Model.durationHours">
+                </div>
+                <div class="field">
+                    <label asp-for="price">
+                        price
+                    </label>
+                    <input asp-for="price"  min="0" value="@Model.price">
+                </div>
+            </div>
+            <div class="two-fields">
+             
+            <div class="field">
+                <label asp-for="IsActive">
+                    Status
+                </label>
+                <select asp-for="IsActive" class="form-control">
+                    <option value="@Model.IsActive"></option>
+                    <option value="true">Active</option>
+                    <option value="false">Inactive</option>
+                </select>
+            </div>
+            </div>
+            <div class="field">
+                <label>
+                    Current Course image
+                </label>
+                <div class="image-placeholder">
+                    <div class="big">
+                        ▤
+                    </div>
+                    Current image preview goes here
+                </div>
+            </div>
+            <div class="field">
+                <label asp-for="ImagePath">
+                    Replace Instructor  image (optional)
+                </label>
+                <input asp-for ="ImagePath" type="file" name="ImageFile" accept="image/*">
+            </div>
+            <div class="form-footer">
+                <a asp-controller="Course" asp-action="Index" class="btn btn-light">
+                    Cancel
+                </a>
+                <button type="submit" class="btn btn-primary">
+                    Save changes
+                </button>
+            </div>
+        
+        </form>
+    </section>
+   
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+

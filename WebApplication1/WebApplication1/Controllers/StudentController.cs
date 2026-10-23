@@ -14,17 +14,23 @@ namespace WebApplication1.Controllers
         }
         public IActionResult Index()
         {
-            var students=_context.students.Include(x=>x.department).ToList();//navigation
+            var students=_context.students.ToList();//navigation
             return View(students);
         }
         public IActionResult Create()
         {
-            ViewBag.department = _context.departments.ToList();
+            //ViewBag.department = _context.departments.ToList();
             return View();
         }
         [HttpPost]
         public IActionResult Create(Student student)
         {
+          
+            if (!ModelState.IsValid)
+            {
+                return View(student);
+            }
+          
             _context.students.Add(student);
             _context.SaveChanges();
             return RedirectToAction("index");
@@ -32,7 +38,7 @@ namespace WebApplication1.Controllers
 
         public IActionResult Edit(int id)
         {
-            ViewBag.department = _context.departments.ToList();
+            //ViewBag.department = _context.departments.ToList();
             var student = _context.students.Find(id);
             if(student!=null)
             {
@@ -46,11 +52,41 @@ namespace WebApplication1.Controllers
         [HttpPost]
         public IActionResult Edit(Student student)
         {
-            _context.students.Update(student);
-            _context.SaveChanges();
-            return RedirectToAction("index");
+            if (!ModelState.IsValid)
+            {
+                return View(student);
+            }
+            var existingStudent = _context.students.Find(student.id);
+
+            if (existingStudent!= null)
+            {
+                existingStudent.name = student.name;
+                existingStudent.Email = student.Email;
+                existingStudent.phone = student.phone;
+                existingStudent.ImagePath = student.ImagePath;
+                existingStudent.IsActive = student.IsActive;
+
+                //_context.students.Update(student);
+                _context.SaveChanges();
+                return RedirectToAction("index");
+            }
+            return NotFound();
+
+
         }
         public IActionResult Delete(int id)
+        {
+            var student = _context.students.FirstOrDefault(item => item.id == id);
+
+            if (student != null)
+            {
+                return View(student);
+            }
+            return NotFound();
+
+        }
+        [HttpPost, ActionName("Delete")]
+        public IActionResult DeleteConfirmed(int id)
         {
             var student = _context.students.Find(id);
             if (student != null)
@@ -66,11 +102,7 @@ namespace WebApplication1.Controllers
         }
         public IActionResult Details(int id)
         {
-            var student = _context.students
-                .Include(d => d.department)
-                .Include(d => d.enrollments)
-                 .ThenInclude(d => d.course)
-                 .FirstOrDefault(d => d.id==id);
+            var student = _context.students.FirstOrDefault(d => d.id==id);
 
             if (student != null)
             {

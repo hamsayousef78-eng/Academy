@@ -1,0 +1,104 @@
+﻿@model WebApplication1.Models.Instructor
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+
+<div class="content">
+    <div class="page-head">
+        <div>
+            <h2 class="page-title">
+                Edit @Model.name
+            </h2>
+        </div>
+        <a asp-controller="Instructor" asp-action="Index" class="btn btn-light">
+            ← Back to Instructors
+        </a>
+    </div>
+    <section class="panel form-panel">
+        <form asp-controller="Instructor" asp-action="Edit" method="post">
+            <div class="field">
+                <label asp-for="id">
+                    Instructor ID
+                </label>
+                <input asp-for="id" value="@Model.id" readonly>
+            </div>
+            <div class="field">
+                <label asp-for="name">
+                    Instructor name 
+                </label>
+                <input asp-for="name" value="@Model.name">
+            </div>
+          
+            <div class="two-fields">
+                <div class="field">
+                    <label asp-for="Email">
+                        Email
+                    </label>
+                    <input asp-for="Email" type="email" min="0" value="@Model.Email">
+                </div>
+                <div class="field">
+                    <label asp-for="phone">
+                        phone
+                    </label>
+                    <input asp-for="phone" type="tel" min="0" value="@Model.phone">
+                </div>
+            </div>
+            <div class="two-fields">
+                <div class="field">
+                    <label asp-for="specialization">
+                        specialization
+                    </label>
+                    <input asp-for="specialization"  min="0" value="@Model.specialization">
+                </div>
+                <div class="field">
+                    <label asp-for="bio">
+                        bio
+                    </label>
+                    <input asp-for="bio"  min="0" value="@Model.bio">
+                </div>
+            </div>
+            <div class="field">
+                <label asp-for="IsActive">
+                    Status
+                </label>
+                <select asp-for="IsActive" class="form-control">
+                    <option value="@Model.IsActive"></option>
+                    <option value="true">Active</option>
+                    <option value="false">Inactive</option>
+                </select>
+            </div>
+            <div class="field">
+                <label>
+                    Current Instructor image
+                </label>
+                <div class="image-placeholder">
+                    <div class="big">
+                        ▤
+                    </div>
+                    Current image preview goes here
+                </div>
+            </div>
+            <div class="field">
+                <label asp-for="ImagePath">
+                    Replace Instructor  image (optional)
+                </label>
+                <input asp-for ="ImagePath" type="file" name="ImageFile" accept="image/*">
+            </div>
+            <div class="form-footer">
+                <a asp-controller="Instructor" asp-action="Index" class="btn btn-light">
+                    Cancel
+                </a>
+                <button type="submit" class="btn btn-primary">
+                    Save changes
+                </button>
+            </div>
+        
+        </form>
+    </section>
+   
+</div>
+
+
+

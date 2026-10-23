@@ -6,13 +6,11 @@ namespace WebApplication1.Models
     {
         public int id {  get; set; }
         public string name { get; set; }
-        public int age { get; set; }
-        [ForeignKey("department")]
-        public int departmentId { get; set; }
-        //Navigation property
-        public Department department { get; set; }
-
-        public List<Enrollment> enrollments { get; set; }
+        public string Email { get; set; }
+        public string? phone { get; set; }
+        public string? ImagePath { get; set; }
+        public bool IsActive { get; set; } = true;
+        //public List<Enrollment> enrollments { get; set; }
 
     }
-}
+}           

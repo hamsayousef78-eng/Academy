@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>
+      Delete Course | Core Academy
+    </title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="app">
+      <aside class="sidebar">
+        <a class="brand" href="index.html">
+          <div class="brand-mark">
+            C
+          </div>
+          <div>
+            <div class="brand-name">
+              Core Academy
+            </div>
+            <div class="brand-sub">
+              Management Portal
+            </div>
+          </div>
+        </a>
+        <div class="nav-label">
+          Workspace
+        </div>
+        <nav class="nav">
+          <a href="index.html">
+            <span class="nav-icon">
+              ▦
+            </span>
+            Dashboard
+          </a>
+          <a class="active" href="courses.html">
+            <span class="nav-icon">
+              ▤
+            </span>
+            Courses
+          </a>
+          <a href="instructors.html">
+            <span class="nav-icon">
+              ♙
+            </span>
+            Instructors
+          </a>
+          <a href="students.html">
+            <span class="nav-icon">
+              ♧
+            </span>
+            Students
+          </a>
+          <a href="rounds.html">
+            <span class="nav-icon">
+              ▦
+            </span>
+            Course Rounds
+          </a>
+        </nav>
+        <div class="nav-label" style="margin-top:22px">
+          Management
+        </div>
+        <nav class="nav">
+          <a href="enrollments.html">
+            <span class="nav-icon">
+              ☷
+            </span>
+            Enrollments
+          </a>
+          <a href="reports.html">
+            <span class="nav-icon">
+              ▥
+            </span>
+            Reports
+          </a>
+          <a href="settings.html">
+            <span class="nav-icon">
+              ⚙
+            </span>
+            Settings
+          </a>
+        </nav>
+        <div class="sidebar-foot">
+          <div class="avatar">
+            CA
+          </div>
+          <div>
+            <div class="profile-name">
+              Academy Admin
+            </div>
+            <div class="profile-role">
+              Administrator
+            </div>
+          </div>
+        </div>
+      </aside>
+      <main class="main">
+        <header class="topbar">
+          <div>
+            <div class="crumb">
+              <a href="index.html">
+                Workspace
+              </a>
+              /
+              <a href="courses.html">
+                Courses
+              </a>
+              / Delete
+            </div>
+            <h1 class="top-title">
+              Delete Course
+            </h1>
+          </div>
+          <div class="top-right">
+            <div class="avatar">
+              CA
+            </div>
+          </div>
+        </header>
+        <div class="content">
+          <div class="page-head">
+            <div>
+              <div class="eyebrow">
+                Course catalog / CA-001
+              </div>
+              <h2 class="page-title">
+                Delete course
+              </h2>
+              <p class="page-desc">
+                A dedicated confirmation page, like the MVC Delete view you learned.
+              </p>
+            </div>
+            <a href="courses.html" class="btn btn-light">
+              ← Back to courses
+            </a>
+          </div>
+          <section class="panel" style="max-width:750px;margin:0 auto">
+            <div class="details-body">
+              <div style="display:flex;align-items:center;gap:13px;margin-bottom:20px">
+                <div style="width:48px;height:48px;border-radius:15px;background:#ffeaec;color:#d74757;display:grid;place-items:center;font-size:22px">
+                  !
+                </div>
+                <div>
+                  <h3 class="panel-title" style="font-size:16px">
+                    Are you sure you want to delete this course?
+                  </h3>
+                  <div class="panel-sub">
+                    This is a preview of the confirmation screen.
+                  </div>
+                </div>
+              </div>
+              <div class="warning">
+                <strong>
+                  Important:
+                </strong>
+                deleting a real course may affect related rounds and enrollments. We will handle relationships and deletion rules when we connect EF Core.
+              </div>
+              <div class="detail-grid">
+                <div class="detail-item">
+                  <div class="detail-label">
+                    Course ID
+                  </div>
+                  <div class="detail-value">
+                    1
+                  </div>
+                </div>
+                <div class="detail-item">
+                  <div class="detail-label">
+                    Course name
+                  </div>
+                  <div class="detail-value">
+                    C++ Fundamentals
+                  </div>
+                </div>
+                <div class="detail-item">
+                  <div class="detail-label">
+                    Students
+                  </div>
+                  <div class="detail-value">
+                    38
+                  </div>
+                </div>
+              </div>
+              <form action="#" method="post" class="form-footer">
+                <a class="btn btn-light" href="courses.html">
+                  Cancel
+                </a>
+                <button type="submit" class="btn btn-danger">
+                  Confirm delete
+                </button>
+              </form>
+              <p class="field-help">
+                Static preview only; the Delete button does not delete data yet.
+              </p>
+            </div>
+          </section>
+          <div class="footer">
+            © Core Academy · Static HTML prototype
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

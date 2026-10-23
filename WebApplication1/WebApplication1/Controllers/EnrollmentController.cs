@@ -11,10 +11,11 @@ namespace WebApplication1.Controllers
         {
             _context = context;
         }
+        /*
         public IActionResult Index()
         {
-            var enrollments = _context.enrollments.Include(x => x.student).Include(c => c.course).ToList();
-            return View(enrollments);
+            //var enrollments = _context.enrollments.Include(x => x.student).Include(c => c.course).ToList();
+            //return View(enrollments);
         }
         public IActionResult Create()
         {
@@ -29,5 +30,6 @@ namespace WebApplication1.Controllers
             _context.SaveChanges();
             return RedirectToAction("index");
         }
+        */
     }
 }

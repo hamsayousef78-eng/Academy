@@ -2,46 +2,104 @@
 
 @{
     ViewData["Title"] = "Index";
-    Layout = "layoutst";
 }
-
-<!--<h1>Index</h1>-->
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.age)
-            </th>
-            <th>
-                Department
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(model => item.name)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.age)
-            </td>
-                <td>
-                    @Html.DisplayFor(model => item.department.name)
-                </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<div class="content">
+    <div class="page-head">
+        <div>
+            <div class="eyebrow">
+                Learner directory
+            </div>
+            <h2 class="page-title">
+                Students
+            </h2>
+            
+        </div>
+        <a class="btn btn-primary" asp-controller="Student" asp-action="Create">
+            Add student
+        </a>
+    </div>
+    <section class="panel">
+        <div class="toolbar">
+            <div>
+                <div class="cell-title">
+                    Student directory
+                </div>
+            
+            </div>
+            <select>
+                <option>
+                    All students
+                </option>
+                <option>
+                    Active
+                </option>
+            </select>
+        </div>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>
+                            Student
+                        </th>
+                        <th>
+                            Email
+                        </th>
+                        <th>
+                            Phone
+                        </th>
+                        <th>
+                            Image
+                        </th>
+                        <th>
+                            Status
+                        </th>
+                        <th>
+                            Action
+                        </th>
+                    </tr>
+                </thead>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(model => item.name)
+                        </td>
+                        <td>
+                           
+                            @Html.DisplayFor(model => item.Email)
+                         
+                        </td>
+                        <td>
+                        
+                            @Html.DisplayFor(model => item.phone)
+                         
+                        </td>
+                        <td>
+                    
+                            @Html.DisplayFor(model => item.ImagePath)
+                           
+                        </td>
+                        <td>
+                          @if (item.IsActive)
+                         {
+                       <span class="pill active-pill">Active</span>
+                       }
+                      else
+                       {
+                                <span class="pill upcoming-pill">Inactive</span>
+                       }
+                        </td>
+                     
+                        <td>
+                            <a class="mini-btn"  asp-action="Edit" asp-route-id="@item.id">Edit</a> 
+                            <a class="mini-btn"  asp-action="Details" asp-route-id="@item.id">Details</a>
+                            <a class="mini-btn"  asp-action="Delete" asp-route-id="@item.id">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            </table>
+        </div>
+        
+    </section>

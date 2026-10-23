@@ -12,24 +12,31 @@ namespace WebApplication1.Controllers
         }
         public IActionResult Index()
         {
-            var courses = _context.courses.ToList();//navigation
-            return View(courses);
+            var course = _context.courses.ToList();//navigation
+            return View(course);
         }
         public IActionResult Create()
         {
-
+            //ViewBag.department = _context.departments.ToList();
             return View();
         }
         [HttpPost]
         public IActionResult Create(Course course)
         {
+
+            if (!ModelState.IsValid)
+            {
+                return View(course);
+            }
+
             _context.courses.Add(course);
             _context.SaveChanges();
             return RedirectToAction("index");
         }
+
         public IActionResult Edit(int id)
         {
-
+            //ViewBag.department = _context.departments.ToList();
             var course = _context.courses.Find(id);
             if (course != null)
             {
@@ -43,11 +50,43 @@ namespace WebApplication1.Controllers
         [HttpPost]
         public IActionResult Edit(Course course)
         {
-            _context.courses.Update(course);
-            _context.SaveChanges();
-            return RedirectToAction("index");
+            if (!ModelState.IsValid)
+            {
+                return View(course);
+            }
+            var existingCourse = _context.courses.Find(course.id);
+
+            if (existingCourse != null)
+            {
+                existingCourse.name = course.name;
+                existingCourse.description = course.description;
+                existingCourse.category = course.category;
+                existingCourse.durationHours = course.durationHours;
+                existingCourse.price = course.price;
+                existingCourse.ImagePath = course.ImagePath;
+                existingCourse.IsActive = course.IsActive;
+
+                //_context.students.Update(student);
+                _context.SaveChanges();
+                return RedirectToAction("index");
+            }
+            return NotFound();
+
+
         }
         public IActionResult Delete(int id)
+        {
+            var course = _context.courses.FirstOrDefault(d => d.id == id);
+
+            if (course != null)
+            {
+                return View(course);
+            }
+            return NotFound();
+
+        }
+        [HttpPost, ActionName("Delete")]
+        public IActionResult DeleteConfirmed(int id)
         {
             var course = _context.courses.Find(id);
             if (course != null)
@@ -63,7 +102,8 @@ namespace WebApplication1.Controllers
         }
         public IActionResult Details(int id)
         {
-            var course = _context.courses.Find(id);
+            var course = _context.courses.FirstOrDefault(d => d.id == id);
+
             if (course != null)
             {
                 return View(course);
@@ -73,5 +113,6 @@ namespace WebApplication1.Controllers
                 return NotFound();
             }
         }
+
     }
 }
