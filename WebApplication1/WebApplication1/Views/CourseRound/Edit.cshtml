@@ -1,0 +1,109 @@
+﻿@model WebApplication1.Models.CourseRound
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+
+<div class="content">
+    <div class="page-head">
+        <div>
+            <h2 class="page-title">
+                Edit @Model.name
+            </h2>
+        </div>
+        <a asp-controller="CourseRound" asp-action="Index" class="btn btn-light">
+            ← Back to Course rounds
+        </a>
+    </div>
+    <section class="panel form-panel">
+        <form asp-controller="CourseRound" asp-action="Edit" method="post">
+            <div class="field">
+                <label asp-for="id">
+                    Round ID
+                </label>
+                <input asp-for="id" value="@Model.id" readonly>
+            </div>
+            <div class="field">
+                <label asp-for="name">
+                    Round name
+                </label>
+                <input asp-for="name" value="@Model.name">
+            </div>
+
+            <div class="two-fields">
+                <div class="field">
+                    <label asp-for="instructorId">
+                        Instructor
+                    </label>
+                    <select asp-for="instructorId" class="form-control">
+                        <option value="">-- Select instructor --</option>
+                        @foreach (var inst in ViewBag.instructor)
+                        {
+                            <option value="@inst.id">@inst.name</option>
+                        }
+                    </select>
+                </div>
+                <div class="field">
+                    <label asp-for="courseId">
+                        Course
+                    </label>
+                    <select asp-for="courseId" class="form-control">
+                        <option value="">-- Select course --</option>
+                        @foreach (var co in ViewBag.course)
+                        {
+                            <option value="@co.id">@co.name</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="two-fields">
+                <div class="field">
+                    <label asp-for="startDate">
+                        start Date
+                    </label>
+                    <input asp-for="startDate" type="date">
+                </div>
+                <div class="field">
+                    <label asp-for="EndDate">
+                        End Date
+                    </label>
+                    <input asp-for="EndDate" type="date">
+                </div>
+            </div>
+            <div class="two-fields">
+                <div class="field">
+                    <label asp-for="capacity">
+                        capacity
+                    </label>
+                    <input asp-for="capacity" min="0" value="@Model.capacity">
+                </div>
+            <div class="field">
+                <label asp-for="IsActive">
+                    Status
+                </label>
+                <select asp-for="IsActive" class="form-control">
+                    <option value="@Model.IsActive"></option>
+                    <option value="true">Active</option>
+                    <option value="false">Inactive</option>
+                </select>
+            </div>
+            </div>
+         
+            <div class="form-footer">
+                <a asp-controller="CourseRound" asp-action="Index" class="btn btn-light">
+                    Cancel
+                </a>
+                <button type="submit" class="btn btn-primary">
+                    Save changes
+                </button>
+            </div>
+
+        </form>
+    </section>
+
+</div>
+
+
+
+

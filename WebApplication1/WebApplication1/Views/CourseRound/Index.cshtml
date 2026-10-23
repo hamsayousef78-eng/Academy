@@ -1,0 +1,134 @@
+﻿@model IEnumerable<WebApplication1.Models.CourseRound>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="content">
+    <div class="page-head">
+        <div>
+            <div class="eyebrow">
+                Learner directory
+            </div>
+            <h2 class="page-title">
+                Course Rounds
+            </h2>
+
+        </div>
+        <a class="btn btn-primary" asp-controller="CourseRound" asp-action="Create">
+            Add Course Round
+        </a>
+    </div>
+    <section class="panel">
+        <div class="toolbar">
+            <div>
+                <div class="cell-title">
+                    Course Round directory
+                </div>
+
+            </div>
+            <select>
+                <option>
+                    All course rounds
+                </option>
+                <option>
+                    Active
+                </option>
+            </select>
+        </div>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>
+                            Round
+                        </th>
+                        <th>
+                            Instructor id
+                        </th>
+                        <th>
+                            Instructor name
+                        </th>
+                        <th>
+                            Course id
+                        </th>
+                        <th>
+                            Course name
+                        </th>
+                        <th>
+                            start Date
+                        </th>
+                        <th>
+                            End Date
+                        </th>
+                        <th>
+                            capacity
+                        </th>
+                        <th>
+                            Status
+                        </th>
+                        <th>
+                            Action
+                        </th>
+                    </tr>
+                </thead>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(model => item.name)
+                        </td>
+                        <td>
+
+                            @Html.DisplayFor(model => item.instructorId)
+
+                        </td>
+                        <td>
+
+                            @Html.DisplayFor(model => item.instructor.name)
+
+                        </td>
+                        <td>
+
+                            @Html.DisplayFor(model => item.courseId)
+
+                        </td>
+                        <td>
+
+                            @Html.DisplayFor(model => item.course.name)
+
+                        </td>
+                        <td>
+
+                            @Html.DisplayFor(model => item.startDate)
+                        </td>
+                        <td>
+
+                            @Html.DisplayFor(model => item.EndDate)
+                        </td>
+                        <td>
+
+                            @Html.DisplayFor(model => item.capacity)
+                        </td>
+                        <td>
+                            @if (item.IsActive)
+                            {
+                                <span class="pill active-pill">Active</span>
+                            }
+                            else
+                            {
+                                <span class="pill upcoming-pill">Inactive</span>
+                            }
+                        </td>
+
+                        <td>
+                            <a class="mini-btn" asp-action="Edit" asp-route-id="@item.id">Edit</a>
+                            <a class="mini-btn" asp-action="Details" asp-route-id="@item.id">Details</a>
+                            <a class="mini-btn" asp-action="Delete" asp-route-id="@item.id">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</section>

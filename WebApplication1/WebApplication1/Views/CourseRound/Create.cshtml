@@ -1,0 +1,105 @@
+﻿@model WebApplication1.Models.CourseRound
+
+@{
+    ViewData["Title"] = "Create";
+}
+<div class="content">
+    <div class="page-head">
+        <div>
+            <h2 class="page-title">
+                Add a new course round
+            </h2>
+        </div>
+        <a asp-controller="CourseRound" asp-action="Index" class="btn btn-light">
+            ← Back to course rounds
+        </a>
+    </div>
+    <div class="form-layout">
+        <section class="panel form-panel" class="panel form-panel" style="width: 100%; max-width: none; grid-column: 1 / -1; box-sizing: border-box;">
+            <h3 class="form-section-title">
+                course round information
+            </h3>
+            <form asp-controller="CourseRound" asp-action="Create" method="post">
+                <div class="field">
+                    <label asp-for="name">
+                        course round
+                    </label>
+                    <input asp-for="name" placeholder="Enter course round" maxlength="100">
+                </div>
+                <div class="two-fields">
+                    <div class="field">
+                        <label asp-for="instructorId">
+                            Instructor
+                        </label>
+                        <select asp-for="instructorId" class="form-control">
+                            <option value="">-- Select instructor --</option>
+                            @foreach (var inst in ViewBag.instructor)
+                            {
+                                <option value="@inst.id">@inst.name</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label asp-for="courseId">
+                            Course
+                        </label>
+                        <select asp-for="courseId" class="form-control">
+                            <option value="">-- Select course --</option>
+                            @foreach (var co in ViewBag.course)
+                            {
+                                <option value="@co.id">@co.name</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="two-fields">
+                    <div class="field">
+                        <label asp-for="startDate">
+                            start Date
+                        </label>
+                        <input asp-for="startDate" class="form-control" placeholder="Enter start Date" />
+                    </div>
+                    <div class="field">
+                        <label asp-for="EndDate">
+                            End Date
+                        </label>
+                        <input asp-for="EndDate" class="form-control" placeholder="Enter End Date" />
+                    </div>
+                </div>
+                <div class="two-fields">
+
+                    <div class="field">
+                        <label asp-for="capacity">
+                            capacity
+                        </label>
+                        <input asp-for="capacity" class="form-control" placeholder="Enter capacity">
+                    </div>
+                    <div class="field">
+                        <label asp-for="IsActive">
+                            Status
+                        </label>
+                        <select name="IsActive" class="form-control">
+                            <option value="">-- Select Status --</option>
+                            <option value="true">Active</option>
+                            <option value="false">Inactive</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-footer">
+                    <a asp-controller="CourseRound" asp-action="Index" class="btn btn-light">
+                        Cancel
+                    </a>
+                    <button class="btn btn-primary" type="submit">
+                        Save Course Round ↗
+                    </button>
+                </div>
+
+            </form>
+        </section>
+
+      
+    </div>
+</div>
+
+
+

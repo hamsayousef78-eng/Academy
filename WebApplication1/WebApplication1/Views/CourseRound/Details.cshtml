@@ -1,0 +1,119 @@
+﻿@model WebApplication1.Models.CourseRound
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="content">
+    <div class="page-head">
+        <div>
+            <div class="eyebrow">
+                Course round catalog / @Model.name
+            </div>
+            <h2 class="page-title">
+                Course round details
+            </h2>
+        </div>
+        <div class="actions">
+            <a class="btn btn-light" asp-controller="CourseRound" asp-action="Index">
+                ← Back
+            </a>
+            <a class="btn btn-primary" asp-route-id="@Model.id" asp-controller="CourseRound" asp-action="Edit">
+                ✎ Edit course round
+            </a>
+        </div>
+    </div>
+    <section class="panel">
+        <div class="details-header">
+
+            <div class="details-title">
+                @Model.name
+            </div>
+
+        </div>
+        <div class="details-body">
+            <div class="detail-grid">
+                <div class="detail-item">
+                    <div class="detail-label">
+                        Round
+                    </div>
+                    <div class="detail-value">
+                        @Model.name
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">
+                        Instructor
+                    </div>
+                    <div class="detail-value">
+                        @Model.instructor.name
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">
+                        Course
+                    </div>
+                    <div class="detail-value">
+                        @Model.course.name
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">
+                        Start Date
+                    </div>
+                    <div class="detail-value">
+                        @Model.startDate
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">
+                        End Date
+                    </div>
+                    <div class="detail-value">
+                        @Model.EndDate
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">
+                        Capacity
+                    </div>
+                    <div class="detail-value">
+                        @Model.capacity
+                    </div>
+                </div>
+             
+                <div class="detail-item">
+                    <div class="detail-label">
+                        Status
+                    </div>
+                    <div class="detail-value">
+                        @if (@Model.IsActive)
+                        {
+                            <span class="pill active-pill">Active</span>
+                        }
+                        else
+                        {
+                            <span class="pill upcoming-pill">Inactive</span>
+                        }
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="form-footer">
+                <a class="btn btn-light" asp-controller="CourseRound" asp-action="Index">
+                    Back to list
+                </a>
+                <a class="btn btn-primary" asp-route-id="@Model.id" asp-controller="CourseRound" asp-action="Edit">
+                    Edit course round
+                </a>
+                <a class="btn btn-danger" asp-route-id="@Model.id" asp-controller="CourseRound" asp-action="Delete">
+                    Delete course round
+                </a>
+            </div>
+        </div>
+    </section>
+    =
+</div>
+
+
