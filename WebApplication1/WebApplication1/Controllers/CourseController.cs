@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
@@ -76,7 +77,8 @@ namespace WebApplication1.Controllers
         }
         public IActionResult Delete(int id)
         {
-            var course = _context.courses.FirstOrDefault(d => d.id == id);
+            var course = _context.courses.Include(x => x.courseRounds).
+                             FirstOrDefault(d => d.id == id);
 
             if (course != null)
             {
@@ -89,29 +91,35 @@ namespace WebApplication1.Controllers
         public IActionResult DeleteConfirmed(int id)
         {
             var course = _context.courses.Find(id);
-            if (course != null)
-            {
-                _context.courses.Remove(course);
-                _context.SaveChanges();
-                return RedirectToAction("index");
-            }
-            else
+            if (course == null)
             {
                 return NotFound();
+             
             }
+            bool hasRounds = _context.courseRounds.Any(round => round.courseId == id);
+            if (hasRounds)
+            {
+                TempData["Error"] = "cannot delete course because has rounds";
+                return RedirectToAction("index");
+            }
+            _context.courses.Remove(course);
+            _context.SaveChanges();
+            return RedirectToAction("index");
         }
         public IActionResult Details(int id)
         {
-            var course = _context.courses.FirstOrDefault(d => d.id == id);
+            var course = _context.courses.Include(x => x.courseRounds).FirstOrDefault(d => d.id == id);
 
             if (course != null)
             {
+                
                 return View(course);
             }
             else
             {
                 return NotFound();
             }
+           
         }
 
     }

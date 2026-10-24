@@ -97,7 +97,19 @@
                         }
                     </div>
                 </div>
-               
+                   <div class="detail-item"><!--دس تمام ولا فيها مشكله-->
+                    <div class="detail-label">
+                        Rounds
+                    </div>
+                    <div class="detail-value">
+                        @foreach (var item in Model.courseRounds)
+                        {
+                            <div >
+                                    @item.name
+                            </div>
+                        }
+                    </div>
+                </div>
             </div>
         
             <div class="form-footer">

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
@@ -36,8 +37,8 @@ namespace WebApplication1.Controllers
 
         public IActionResult Edit(int id)
         {
-            //ViewBag.department = _context.departments.ToList();
-            var instructor = _context.instructors.Find(id);
+           
+            var instructor = _context.instructors.FirstOrDefault(d => d.id == id);
             if (instructor != null)
             {
                 return View(instructor);
@@ -52,6 +53,7 @@ namespace WebApplication1.Controllers
         {
             if (!ModelState.IsValid)
             {
+                
                 return View(instructor);
             }
             var existingInstructor = _context.instructors.Find(instructor.id);
@@ -76,7 +78,8 @@ namespace WebApplication1.Controllers
         }
         public IActionResult Delete(int id)
         {
-            var instructor = _context.instructors.FirstOrDefault( d => d.id==id);
+            var instructor = _context.instructors.Include(x => x.courseRounds).ThenInclude(x => x.course).
+                             FirstOrDefault(d => d.id == id);
 
             if (instructor != null)
             {
@@ -89,20 +92,26 @@ namespace WebApplication1.Controllers
         public IActionResult DeleteConfirmed(int id)
         {
             var instructor = _context.instructors.Find(id);
-            if (instructor != null)
-            {
-                _context.instructors.Remove(instructor);
-                _context.SaveChanges();
-                return RedirectToAction("index");
-            }
-            else
+            if (instructor == null)
             {
                 return NotFound();
+               
             }
+            bool hasCourseRounds=_context.courseRounds.Any(round=>round.instructorId==id);
+            if(hasCourseRounds)
+            {
+                TempData["Error"] = "cannot delete instructor because assigned in course round";
+                return RedirectToAction("index");
+            }
+            _context.instructors.Remove(instructor);
+            _context.SaveChanges();
+            //TempData.Remove("Error");
+            return RedirectToAction("index");
         }
         public IActionResult Details(int id)
         {
-            var instructor = _context.instructors.FirstOrDefault(d => d.id == id);
+            var instructor = _context.instructors.Include(x => x.courseRounds).ThenInclude(x => x.course).
+                             FirstOrDefault(d => d.id == id);
 
             if (instructor != null)
             {

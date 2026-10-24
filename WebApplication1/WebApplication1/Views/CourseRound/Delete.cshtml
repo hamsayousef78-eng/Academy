@@ -1,0 +1,110 @@
+﻿@model WebApplication1.Models.CourseRound
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="content">
+    <div class="page-head">
+        <div>
+            <div class="eyebrow">
+                Course Round catalog / @Model.name
+            </div>
+            <h2 class="page-title">
+                Delete course round
+            </h2>
+
+        </div>
+        <a asp-controller="CourseRound" asp-action="Index" class="btn btn-light">
+            ← Back to course rounds
+        </a>
+    </div>
+    <section class="panel" style="max-width:750px;margin:0 auto">
+        <div class="details-body">
+            <div style="display:flex;align-items:center;gap:13px;margin-bottom:20px">
+                <div style="width:48px;height:48px;border-radius:15px;background:#ffeaec;color:#d74757;display:grid;place-items:center;font-size:22px">
+                    !
+                </div>
+                <div>
+                    <h3 class="panel-title" style="font-size:16px">
+                        Are you sure you want to delete this course round?
+                    </h3>
+
+                </div>
+            </div>
+            <div class="detail-grid">
+               
+                <div class="detail-item">
+                    <div class="detail-label">
+                        Course Round 
+                    </div>
+                    <div class="detail-value">
+                        @Model.name
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">
+                        Instructor
+                    </div>
+                    <div class="detail-value">
+                        @Model.instructor.name
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">
+                        Course
+                    </div>
+                    <div class="detail-value">
+                        @Model.course.name
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">
+                        Start Date
+                    </div>
+                    <div class="detail-value">
+                        @Model.startDate
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">
+                        End Date
+                    </div>
+                    <div class="detail-value">
+                        @Model.EndDate
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">
+                        Capacity
+                    </div>
+                    <div class="detail-value">
+                        @Model.capacity
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">
+                        IsActive
+                    </div>
+                    <div class="detail-value">
+                        @Model.IsActive
+                    </div>
+                </div>
+            </div>
+            <form asp-controller="CourseRound" asp-action="Delete" method="post" class="form-footer">
+                <a class="btn btn-light" asp-controller="CourseRound" asp-action="Index">
+                    Cancel
+                </a>
+                <button type="submit" class="btn btn-danger">
+                    Confirm delete
+                </button>
+            </form>
+
+        </div>
+    </section>
+
+</div>
+
+</div>
+
+

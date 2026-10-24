@@ -3,45 +3,75 @@
 @{
     ViewData["Title"] = "Create";
 }
-
-<h1>Create</h1>
-
-<h4>Enrollment</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
-            <div class="form-group">
-                <label asp-for="student" class="control-label"></label>
-                <select name="studentId" class="form-control">
-                    <option value="">-- Select student --</option>
-
-                    @foreach (var  student in ViewBag.student)
-                    {
-                        <option value="@student.id">@student.name</option>
-                    }
-                </select>
-            </div>
-            <div class="form-group">
-                <!--<label asp-for="course" class="control-label"></label>-->
-                <select name="courseId" class="form-control">
-                    <option value="">-- Select course --</option>
-
-                    @foreach (var course in ViewBag.course)
-                    {
-                        <option value="@course.id">@course.name</option>
-                    }
-                </select>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+<div class="content" >
+    <div class="page-head">
+        <div>
+            <h2 class="page-title">
+                Add a new enrollment
+            </h2>
+        </div>
+        <a asp-controller ="Enrollment" asp-action="Index" class="btn btn-light">
+            ← Back to enrollments
+        </a>
+    </div>
+    <div class="form-layout">
+        <section class="panel form-panel" class="panel form-panel" style="width: 100%; max-width: none; grid-column: 1 / -1; box-sizing: border-box;">
+            <h3 class="form-section-title">
+                Enrollment information
+            </h3>
+            <form asp-controller="Enrollment" asp-action="Create" method="post">
+               
+                <div class="two-fields">
+                     <div class="field">
+                        <label asp-for="studentId">
+                           Student
+                        </label>
+                        <select asp-for="studentId" class="form-control">
+                            <option value="">-- Select Student --</option>
+                            @foreach (var student in ViewBag.student)
+                            {
+                                <option value="@student.id">@student.name</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label asp-for="courseRoundId">
+                            Course Round
+                        </label>
+                        <select asp-for="courseRoundId" class="form-control">
+                            <option value="">-- Select Course Round --</option>
+                            @foreach (var enroll in ViewBag.courseRound)
+                            {
+                                <option value="@enroll.id">@enroll.name</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                     <div class="two-fields">
+              
+                      
+                      <div class="field">
+                        <label asp-for="enrollmentDate ">
+                         Enrollmen tDate  
+                        </label>
+                        <input asp-for="enrollmentDate " class="form-control" placeholder="" />   
+                    </div>
+                </div>
+            
+                <div class="form-footer">
+                    <a asp-controller="Enrollment" asp-action="Index" class="btn btn-light">
+                        Cancel
+                    </a>
+                    <button class="btn btn-primary" type="submit">
+                        Save Enrollment ↗
+                    </button>
+               </div> 
+              
+            </form>
+        </section>
+      
+        
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+

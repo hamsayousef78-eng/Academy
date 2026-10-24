@@ -81,6 +81,18 @@
                         @Model.price
                     </div>
                 </div>
+                 <div class="detail-item">
+                 
+                    <div class="detail-label">
+                      Rounds
+                    </div>
+                    <div class="detail-value">
+                        @foreach (var item in Model.courseRounds)
+                        {
+                            @item.name
+                        }
+                    </div>
+                </div>
                 <div class="detail-item">
                     <div class="detail-label">
                         Image

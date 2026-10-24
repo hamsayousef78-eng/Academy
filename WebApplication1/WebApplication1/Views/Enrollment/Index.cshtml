@@ -4,49 +4,98 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<div class="content">
+    <div class="page-head">
+        <div>
+            <div class="eyebrow">
+                Learner directory
+            </div>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <tr>
-                <th>Stuent ID</th>
-                <th>Stuent Name</th>
-
-            </tr>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@if(Model.Any())
-        {
-            @foreach (var item in Model)
+            <h2 class="page-title">
+                Enrollments
+            </h2>
+             @if (TempData["Error"] != null)//عسان الرساله تظهر
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(model => item.studentId)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(model => item.student.name)
-                    </td>
+               <div class="alert alert-danger" role="alert">
+              @TempData["Error"]
+             </div>
+           }
+        </div>
+        <a class="btn btn-primary" asp-controller="Enrollment" asp-action="Create">
+            Add enrollment
+        </a>
+    </div>
+    <section class="panel">
+        <div class="toolbar">
+            <div>
+                <div class="cell-title">
+                    Instructor directory
+                </div>
             
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                    </td>
-                </tr>
-            }
-        }
-        else{
-            <tr>
-                <td>no registeration found</td>
-                
-            </tr>
+            </div>
+            <select>
+                <option>
+                    All enrollments
+                </option>
+                <option>
+                    Active
+                </option>
+            </select>
+        </div>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>
+                            Student
+                        </th>
+                          <th>
+                            Course
+                        </th>
+                        <th>
+                            Round
+                        </th>
+                        <th>
+                            Enrollment Date
+                        </th>
+                       
+                        <th>
+                            Action
+                        </th>
+                    </tr>
+                </thead>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(model => item.student.name)
+                        </td>
+                          <td>
+                            @Html.DisplayFor(model => item.courseRound.course.name)
+                        </td>
+                        <td>
+                           
+                            @Html.DisplayFor(model => item.courseRound.name)
+                         
+                        </td>
+                        <td>
+                        
+                            @Html.DisplayFor(model => item.enrollmentDate)
+                         
+                        </td>
+                        
+                      
+                     
+                        <td>
+                            <a class="mini-btn"  asp-action="Edit" asp-route-id="@item.id">Edit</a> 
+                            <a class="mini-btn"  asp-action="Details" asp-route-id="@item.id">Details</a>
+                            <a class="mini-btn"  asp-action="Delete" asp-route-id="@item.id">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            </table>
+        </div>
+        
+    </section>
 
-        }
-    </tbody>
-</table>

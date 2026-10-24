@@ -1,0 +1,76 @@
+﻿@model WebApplication1.Models.Enrollment
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+
+<div class="content">
+    <div class="page-head">
+        <div>
+            <h2 class="page-title">
+                Enrollment 
+            </h2>
+        </div>
+        <a asp-controller="Enrollment" asp-action="Index" class="btn btn-light">
+            ← Back to Enrollments
+        </a>
+    </div>
+    <section class="panel form-panel">
+        <form asp-controller="Enrollment" asp-action="Edit" method="post">
+          
+
+            <div class="two-fields">
+                <div class="field">
+                    <label asp-for="studentId">
+                        Student
+                    </label>
+                    <select asp-for="studentId" class="form-control">
+                        <option value="">-- Select student --</option>
+                        @foreach (var student in ViewBag.student)
+                        {
+                            <option value="@student.id">@student.name</option>
+                        }
+                    </select>
+                </div>
+                <div class="field">
+                    <label asp-for="courseRoundId">
+                        Course Round
+                    </label>
+                    <select asp-for="courseRoundId" class="form-control">
+                        <option value="">-- Select Course Round --</option>
+                        @foreach (var round in ViewBag.courseRound)
+                        {
+                            <option value="@round.id">@round.name</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="two-fields">
+                <div class="field">
+                    <label asp-for="enrollmentDate">
+                        Enrollment Date
+                    </label>
+                    <input asp-for="enrollmentDate" type="date">
+                </div>
+             
+            </div>
+          
+         
+            <div class="form-footer">
+                <a asp-controller="Enrollment" asp-action="Index" class="btn btn-light">
+                    Cancel
+                </a>
+                <button type="submit" class="btn btn-primary">
+                    Save changes
+                </button>
+            </div>
+
+        </form>
+    </section>
+
+</div>
+
+
+
+

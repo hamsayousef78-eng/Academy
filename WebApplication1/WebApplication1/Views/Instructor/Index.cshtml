@@ -3,16 +3,23 @@
 @{
     ViewData["Title"] = "Index";
 }
+
 <div class="content">
     <div class="page-head">
         <div>
             <div class="eyebrow">
                 Learner directory
             </div>
+
             <h2 class="page-title">
                 Instructors
             </h2>
-           
+             @if (TempData["Error"] != null)//عسان الرساله تظهر
+            {
+               <div class="alert alert-danger" role="alert">
+              @TempData["Error"]
+             </div>
+           }
         </div>
         <a class="btn btn-primary" asp-controller="Instructor" asp-action="Create">
             Add instructor

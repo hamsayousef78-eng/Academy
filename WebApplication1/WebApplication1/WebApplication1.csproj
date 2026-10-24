@@ -23,10 +23,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\Enrollment\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Include="wwwroot\css\styles.css" />
   </ItemGroup>
 	<ItemGroup>

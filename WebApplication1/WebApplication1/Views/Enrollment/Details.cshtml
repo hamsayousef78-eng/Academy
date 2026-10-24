@@ -1,0 +1,88 @@
+﻿@model WebApplication1.Models.Enrollment
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="content">
+    <div class="page-head">
+        <div>
+            <div class="eyebrow">
+               Enrollment catalog 
+            </div>
+            <h2 class="page-title">
+                Enrollment details
+            </h2>
+        </div>
+        <div class="actions">
+            <a class="btn btn-light" asp-controller="Enrollment" asp-action="Index">
+                ← Back
+            </a>
+            <a class="btn btn-primary" asp-route-id="@Model.id" asp-controller="Enrollment" asp-action="Edit">
+                ✎ Edit Enrollment
+            </a>
+        </div>
+    </div>
+    <section class="panel">
+        <div class="details-header">
+
+            <div class="details-title">
+                Enrollment /
+            </div>
+
+        </div>
+        <div class="details-body">
+            <div class="detail-grid">
+                <div class="detail-item">
+                    <div class="detail-label">
+                        Student
+                    </div>
+                    <div class="detail-value">
+                        @Model.student.name
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">
+                        Course
+                    </div>
+                    <div class="detail-value">
+                        @Model.courseRound.course.name
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">
+                        Round
+                    </div>
+                    <div class="detail-value">
+                        @Model.courseRound.name
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">
+                        Enrollment Date
+                    </div>
+                    <div class="detail-value">
+                        @Model.enrollmentDate
+                    </div>
+                </div>
+            
+
+            </div>
+
+            <div class="form-footer">
+                <a class="btn btn-light" asp-controller="Enrollment" asp-action="Index">
+                    Back to list
+                </a>
+                <a class="btn btn-primary" asp-route-id="@Model.id" asp-controller="Enrollment" asp-action="Edit">
+                    Edit Enrollment
+                </a>
+                <a class="btn btn-danger" asp-route-id="@Model.id" asp-controller="Enrollment" asp-action="Delete">
+                    Delete Enrollment
+                </a>
+            </div>
+        </div>
+    </section>
+    =
+</div>
+
+

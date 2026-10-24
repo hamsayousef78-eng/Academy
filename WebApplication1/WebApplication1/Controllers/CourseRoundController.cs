@@ -21,7 +21,13 @@ namespace WebApplication1.Controllers
         {
             ViewBag.instructor = _context.instructors.ToList();
             ViewBag.course = _context.courses.ToList();
-            return View();
+            var round = new CourseRound
+            {
+                startDate = DateTime.Now,
+                capacity = 1,
+                IsActive = true,
+            };
+            return View(round);
         }
         [HttpPost]
         public IActionResult Create(CourseRound round)
@@ -82,6 +88,33 @@ namespace WebApplication1.Controllers
 
         }
       
+public IActionResult Delete(int id)
+{
+      var round = _context.courseRounds.Include(x => x.instructor).Include(c => c.course).FirstOrDefault(r => r.id == id);
+            if (round != null)
+         {
+        return View(round);
+         }
+    return NotFound();
+
+}
+       
+[HttpPost, ActionName("Delete")]
+public IActionResult DeleteConfirmed(int id)
+{
+    var round = _context.courseRounds.Find(id);
+    if (round != null)
+    {
+        _context.courseRounds.Remove(round);
+        _context.SaveChanges();
+        return RedirectToAction("index");
+    }
+    else
+    {
+        return NotFound();
+    }
+}
+ 
         public IActionResult Details(int id)
        {
             var round = _context.courseRounds.Include(x => x.instructor).Include(c => c.course).FirstOrDefault(d => d.id == id);

@@ -96,9 +96,30 @@
                         }
                     </div>
                 </div>
-               
-            </div>
-        
+                <div class="detail-item"><!--دس تمام ولا فيها مشكله-->
+                    <div class="detail-label">
+                        Courses /Rounds
+                    </div>
+                    <div class="detail-value">
+                        @foreach (var item in Model.courseRounds)
+                        {
+                            <div >
+                                <span class="course-name">
+                                    
+                                    @item.course.name               
+                                </span>
+
+                                <span class="round-name">
+                                 
+                                    @item.name
+                                </span>
+                            </div>
+                        }
+                    </div>
+                </div>
+              
+           
+          </div>
             <div class="form-footer">
                 <a class="btn btn-light" asp-controller="Instructor" asp-action="Index">
                     Back to list
@@ -112,6 +133,7 @@
             </div>
         </div>
     </section>
-   =
+   
 </div>
+
 

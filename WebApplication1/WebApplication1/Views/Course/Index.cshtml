@@ -12,7 +12,12 @@
             <h2 class="page-title">
                 Courses
             </h2>
-           
+           @if (TempData["Error"] != null)//عسان الرساله تظهر
+            {
+               <div class="alert alert-danger" role="alert">
+              @TempData["Error"]
+             </div>
+           }
         </div>
         <a class="btn btn-primary" asp-controller="Course" asp-action="Create">
             Add course
