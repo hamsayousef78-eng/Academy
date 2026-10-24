@@ -94,7 +94,7 @@ namespace WebApplication1.Controllers
             return NotFound();
 
         }
-
+        /*
         [HttpPost, ActionName("Delete")]
         public IActionResult DeleteConfirmed(int id)
         {
@@ -114,6 +114,7 @@ namespace WebApplication1.Controllers
             _context.SaveChanges();
             return RedirectToAction("index");
         }
+        */
 
         public IActionResult Details(int id)
         {
