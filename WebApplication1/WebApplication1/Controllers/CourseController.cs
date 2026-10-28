@@ -27,6 +27,13 @@ namespace WebApplication1.Controllers
 
             if (!ModelState.IsValid)
             {
+                var errors = ModelState
+             .Where(x => x.Value != null && x.Value.Errors.Count > 0)
+             .SelectMany(x => x.Value!.Errors.Select(e =>
+                 $"{x.Key}: {e.ErrorMessage}"));
+
+                ViewBag.Errors = errors.ToList();
+
                 return View(course);
             }
 

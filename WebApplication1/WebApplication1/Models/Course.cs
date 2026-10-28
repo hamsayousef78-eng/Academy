@@ -10,7 +10,7 @@
         public double price { get; set; }
         public string? ImagePath { get; set; }
         public bool IsActive { get; set; } = true;
-        public List<CourseRound> courseRounds { get; set; }
+        public List<CourseRound>? courseRounds { get; set; }
         //public List<Enrollment> enrollments { get; set; }
     }
 }
